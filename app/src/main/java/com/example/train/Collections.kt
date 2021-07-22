@@ -28,7 +28,7 @@ fun main() {
     for (key in map.keys ) {
         println("$key - ${map[key]}  ")
     }
-    val mapOfAnyType = mapOf<Any,Any>(1 to "4","4" to 1)
+    val mapOfAnyType = mapOf<Any,Any>()
 }
 
 

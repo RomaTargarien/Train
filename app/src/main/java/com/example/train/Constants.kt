@@ -1,23 +1,51 @@
 package com.example.train
 
 import android.util.Log
-import com.example.train.Constants.TAG
+import java.io.ByteArrayInputStream
 import java.lang.Exception
+import java.nio.ByteBuffer
+import java.nio.ByteOrder
 
 object Constants {
     const val NAME = "Roma"
     const val URL = "https://kotlinlang.org/docs/basic-syntax.html"
-    const val NUMBER = 100
+    const val NUMBER: Double = 100.toDouble()
+    const val float: Float = 100.toFloat()
 
-    const val TAG = "Constants"
 }
 
 fun main() {
+    val floatNum: Float = 43443234.5f
+    val list = floatNum.toBits()
+    val array = ByteArray(8)
+    for (i in 0..array.size-1) {
+        array.set(i, (i+1).toByte())
+    }
+    val buffer = ByteBuffer.allocate(8).order(ByteOrder.LITTLE_ENDIAN).put(array)
+    val buffer1 = ByteBuffer.allocate(8).order(ByteOrder.LITTLE_ENDIAN).putInt(8)
+    val buffer2 = ByteBuffer.allocate(8).putInt(8).order(ByteOrder.LITTLE_ENDIAN)
+    print(buffer.get(0) )
+    val x = buffer.getShort(0)
+    val z = buffer.getFloat(2)
+    val char = buffer.getChar(6)
+
+
+    println(x)
+    println(z)
+    println(char)
+
+    val float2 = Float.Companion.fromBits(1277540617)
+    println(float2)
+    val data = ByteArray(8)
+
+    //val intNum: Int = floatNum as Int
+    //println(intNum)
     var numberFloat = 10.0232244f
     var numberDouble = numberFloat.toDouble()
     println(numberDouble) // 10.023224830627441
     val numberInt = numberDouble.toInt()
     println(numberInt) // 10
+
 
     val numberDouble2 = 10.0232244
     val numberFloat2 = numberDouble2.toFloat()
